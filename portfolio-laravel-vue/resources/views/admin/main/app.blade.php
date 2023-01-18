@@ -30,7 +30,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                    <router-link to="/potrolio_list">Portfolio Lista</router-link>
+                    <router-link to="/uj_portfolio">Uj portfolio</router-link>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

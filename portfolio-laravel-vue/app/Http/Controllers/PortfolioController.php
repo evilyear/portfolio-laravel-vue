@@ -15,7 +15,8 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        //
+        $portfolios = Portfolio::all();
+        return response()->json($portfolios);
     }
 
     /**
@@ -25,7 +26,7 @@ class PortfolioController extends Controller
      */
     public function create()
     {
-        //
+    
     }
 
     /**
@@ -36,7 +37,12 @@ class PortfolioController extends Controller
      */
     public function store(StorePortfolioRequest $request)
     {
-        //
+        $portfolio = new Portfolio;
+        $portfolio->title = $request->title;
+        $portfolio->description = $request->description;
+        $portfolio->save();
+    
+        return response()->json($portfolio);
     }
 
     /**
@@ -47,7 +53,8 @@ class PortfolioController extends Controller
      */
     public function show(Portfolio $portfolio)
     {
-        //
+        $portfolio = Portfolio::find($id);
+        return response()->json($portfolio);
     }
 
     /**
@@ -58,7 +65,8 @@ class PortfolioController extends Controller
      */
     public function edit(Portfolio $portfolio)
     {
-        //
+        $portfolio = Portfolio::find($id);
+        return response()->json($portfolio);
     }
 
     /**
@@ -70,7 +78,12 @@ class PortfolioController extends Controller
      */
     public function update(UpdatePortfolioRequest $request, Portfolio $portfolio)
     {
-        //
+        $portfolio = Portfolio::find($id);
+        $portfolio->title = $request->title;
+        $portfolio->description = $request->description;
+        $portfolio->save();
+    
+        return response()->json($portfolio);
     }
 
     /**
@@ -81,6 +94,9 @@ class PortfolioController extends Controller
      */
     public function destroy(Portfolio $portfolio)
     {
-        //
+        $portfolio = Portfolio::find($id);
+        $portfolio->delete();
+
+        return response()->json(['message' => 'Successfully deleted']);
     }
 }
